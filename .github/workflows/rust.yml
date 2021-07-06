@@ -1,0 +1,43 @@
+name: Run REDscript Build & Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: "always"
+  WASM_BINDGEN_VERSION: "0.2.72"
+
+jobs:
+  deploy-wasm:
+    name: Deploy WASM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          override: true
+          target: wasm32-unknown-unknown
+
+      - name: Set up wasm-bindgen-cli
+        run: cargo install wasm-bindgen-cli --version ${WASM_BINDGEN_VERSION}
+
+      - name: Set up wasm-opt
+        run: sudo apt-get install binaryen
+
+      - name: Set up trunk
+        uses: jetli/trunk-action@v0.1.0
+        with:
+          version: 'latest'
+
+      - name: Build
+        run: trunk build --release
+
+      - name: Deploy
+        run: |
+          sudo npm i -g surge
+          surge ./dist "https://try-redscript.surge.sh" --token ${{ secrets.SURGE_TOKEN }}
