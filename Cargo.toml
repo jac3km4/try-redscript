@@ -15,7 +15,7 @@ opt-level = "s"
 lto = true
 
 [patch.crates-io]
-proc-macro2 = { git = "https://github.com/Freax13/proc-macro2", branch = "readd-wasm" }
-syn = { git = "https://github.com/Freax13/syn", branch = "readd-proc-macro-wasm" }
+proc-macro2 = { git = "https://github.com/jac3km4/proc-macro2", branch = "readd-wasm" }
+syn = { git = "https://github.com/jac3km4/syn", branch = "readd-proc-macro-wasm" }
 synstructure = { git = "https://github.com/jac3km4/synstructure", branch = "wasm" }
 gc-arena = { git = "https://github.com/jac3km4/gc-arena", branch = "wasm" }

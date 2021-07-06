@@ -336,7 +336,7 @@ checksum = "c719dcf55f09a3a7e764c6649ab594c18a177e3599c467983cdf644bfc0a4088"
 [[package]]
 name = "proc-macro2"
 version = "1.0.24"
-source = "git+https://github.com/Freax13/proc-macro2?branch=readd-wasm#01acb2c7dba5c68dd5da88dce40204cdee90cd44"
+source = "git+https://github.com/jac3km4/proc-macro2?branch=readd-wasm#01acb2c7dba5c68dd5da88dce40204cdee90cd44"
 dependencies = [
  "unicode-xid",
 ]
@@ -501,7 +501,7 @@ dependencies = [
 [[package]]
 name = "syn"
 version = "1.0.48"
-source = "git+https://github.com/Freax13/syn?branch=readd-proc-macro-wasm#dd4715742013b9d77941bfee4d70b90bd1a4a93c"
+source = "git+https://github.com/jac3km4/syn?branch=readd-proc-macro-wasm#dd4715742013b9d77941bfee4d70b90bd1a4a93c"
 dependencies = [
  "proc-macro2",
  "quote",
