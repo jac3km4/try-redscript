@@ -1,7 +1,11 @@
-use std::{cell::RefCell, path::PathBuf, rc::Rc};
+use std::cell::RefCell;
+use std::path::PathBuf;
+use std::rc::Rc;
 
-use redscript::{ast::Pos, error::Error};
-use redscript_compiler::{source_map::Files, Compiler};
+use redscript::ast::Pos;
+use redscript::error::Error;
+use redscript_compiler::source_map::Files;
+use redscript_compiler::Compiler;
 use redscript_vm::{native, VM};
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
