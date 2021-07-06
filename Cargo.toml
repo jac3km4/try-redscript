@@ -1,0 +1,21 @@
+[package]
+name = "try-redscript"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+yew = "0.18"
+wasm-bindgen = "0.2"
+redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "4836356" }
+redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "4836356" }
+redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "d05fa7c" }
+
+[profile.release]
+opt-level = "s"
+lto = true
+
+[patch.crates-io]
+proc-macro2 = { git = "https://github.com/Freax13/proc-macro2", branch = "readd-wasm" }
+syn = { git = "https://github.com/Freax13/syn", branch = "readd-proc-macro-wasm" }
+synstructure = { git = "https://github.com/jac3km4/synstructure", branch = "wasm" }
+gc-arena = { git = "https://github.com/jac3km4/gc-arena", branch = "wasm" }
