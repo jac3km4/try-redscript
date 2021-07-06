@@ -56,10 +56,10 @@ impl Component for Model {
                 </nav>
                 <div class="container">
                     <div class="row">
-                        <div id="editor" class="column column-66">
+                        <div id="editor" class="column">
                             {DEFAULT_CODE}
                         </div>
-                        <div class="column column-33">
+                        <div class="output-bar column column-33">
                             <button onclick=self.link.callback(|_| Msg::Compile)>{ "Run" }</button>
                             <pre>
                                 <code> { if self.output.is_empty() { "No output" } else { &self.output } } </code>

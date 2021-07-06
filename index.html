@@ -2,13 +2,9 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Try REDscript</title>
     <style type="text/css" media="screen">
-        #editor {
-            min-height: 600px;
-        }
-
         nav {
             background: #f4f5f6;
             border-bottom: .1rem solid #d1d1d1;
@@ -16,11 +12,22 @@
             height: 5.2rem;
             left: 0;
             max-width: 100%;
-            position: fixed;
+            position: absolute;
             right: 0;
             top: 0;
             width: 100%;
-            z-index: 2;
+        }
+
+        pre {
+            font-size: 1.6rem;
+        }
+
+        body {
+            margin-top: 80px;
+        }
+        
+        #editor {
+            min-height: 56rem;
         }
 
         .nav-title {
@@ -29,12 +36,9 @@
             font-size: 1.6rem;
         }
 
-        pre {
-            font-size: 1.6rem;
-        }
-
-        body {
-            padding-top: 80px;
+        .output-bar {
+            max-width: unset;
+            padding: 1rem;
         }
     </style>
     <link data-trunk rel="css" href="assets/milligram.min.css" />
