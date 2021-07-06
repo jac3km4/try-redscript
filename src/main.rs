@@ -15,7 +15,7 @@ fn main() {
 }
 
 enum Msg {
-    Compile,
+    Execute,
 }
 
 struct Model {
@@ -38,9 +38,9 @@ impl Component for Model {
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-            Msg::Compile => {
+            Msg::Execute => {
                 let text = self.editor.as_ref().unwrap().get_value();
-                self.output = compile(text).unwrap_or_else(|err| format!("Error: {:?}", err));
+                self.output = execute(text).unwrap_or_else(|err| format!("Error: {:?}", err));
                 true
             }
         }
@@ -55,7 +55,8 @@ impl Component for Model {
             <div>
                 <nav>
                     <section class="container">
-                        <a class="nav-title">{"Try REDscript"}</a>
+                        <a class="nav-item bold">{"Try REDscript"}</a>
+                        <a class="nav-item float-right" href="https://github.com/jac3km4/try-redscript">{"Code"}</a>
                     </section>
                 </nav>
                 <div class="container">
@@ -64,7 +65,7 @@ impl Component for Model {
                             {DEFAULT_CODE}
                         </div>
                         <div class="output-bar column column-33">
-                            <button onclick=self.link.callback(|_| Msg::Compile)>{ "Run" }</button>
+                            <button onclick=self.link.callback(|_| Msg::Execute)>{ "Run" }</button>
                             <pre>
                                 <code> { if self.output.is_empty() { "No output" } else { &self.output } } </code>
                             </pre>
@@ -75,8 +76,8 @@ impl Component for Model {
         }
     }
 
-    fn rendered(&mut self, _first_render: bool) {
-        if _first_render {
+    fn rendered(&mut self, first_render: bool) {
+        if first_render {
             unsafe {
                 let editor = edit("editor");
                 editor.set_theme("ace/theme/tomorrow_night");
@@ -108,10 +109,17 @@ extern "C" {
     fn set_mode(this: &Session, s: &str);
 }
 
-fn compile(source: String) -> Result<String, Error> {
-    let mut pool = native::default_pool();
+fn execute(source: String) -> Result<String, Error> {
     let buffer = Rc::new(RefCell::new(String::new()));
 
+    let buffer_ref = buffer.clone();
+    let log_handler = move |str: String| {
+        let mut buf = buffer_ref.borrow_mut();
+        buf.push_str(&str);
+        buf.push('\n');
+    };
+
+    let mut pool = native::default_pool();
     let mut compiler = Compiler::new(&mut pool)?;
     let mut sources = Files::default();
     sources.add(PathBuf::from("natives"), NATIVE_DEFS.to_owned());
@@ -119,12 +127,7 @@ fn compile(source: String) -> Result<String, Error> {
     compiler.compile(&sources)?;
 
     let mut vm = VM::new(&pool);
-    let buffer_ref = buffer.clone();
-    native::register_natives(&mut vm, move |str| {
-        let mut buf = buffer_ref.borrow_mut();
-        buf.push_str(&str);
-        buf.push('\n');
-    });
+    native::register_natives(&mut vm, log_handler);
 
     let main = vm
         .metadata()
@@ -136,10 +139,10 @@ fn compile(source: String) -> Result<String, Error> {
     if let Some(res) = vm.pretty_result() {
         buffer.push_str(&format!("Result: {}", res));
     }
-    Ok(buffer.clone())
+    Ok(buffer)
 }
 
-const DEFAULT_CODE: &'static str = r#"
+const DEFAULT_CODE: &str = r#"
 func main() -> Int32 {
     let cat: ref<Pet> = new Cat();
     Log(cat.make_a_sound());
@@ -173,7 +176,7 @@ class Cat extends Pet {
 }
 "#;
 
-const NATIVE_DEFS: &'static str = r#"
+const NATIVE_DEFS: &str = r#"
 native func Log(str: String)
 
 native func OperatorAdd(a: String, b: String) -> String
