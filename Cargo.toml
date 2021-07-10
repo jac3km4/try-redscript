@@ -8,7 +8,7 @@ yew = "0.18"
 wasm-bindgen = "0.2"
 redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "4836356" }
 redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "4836356" }
-redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "d05fa7c" }
+redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "06be69a" }
 
 [profile.release]
 opt-level = "s"

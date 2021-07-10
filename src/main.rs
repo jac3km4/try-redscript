@@ -78,12 +78,10 @@ impl Component for Model {
 
     fn rendered(&mut self, first_render: bool) {
         if first_render {
-            unsafe {
-                let editor = edit("editor");
-                editor.set_theme("ace/theme/tomorrow_night");
-                editor.get_session().set_mode("ace/mode/swift");
-                self.editor = Some(editor);
-            }
+            let editor = edit("editor");
+            editor.set_theme("ace/theme/tomorrow_night");
+            editor.get_session().set_mode("ace/mode/swift");
+            self.editor = Some(editor);
         }
     }
 }

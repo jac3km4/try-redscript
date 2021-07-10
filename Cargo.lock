@@ -393,7 +393,7 @@ dependencies = [
 [[package]]
 name = "redscript-vm"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript-vm.git?rev=d05fa7c#d05fa7c62ea8b7e2cfa73ed2932043ab11ebc0db"
+source = "git+https://github.com/jac3km4/redscript-vm.git?rev=06be69a#06be69aa22c6ca51c26c86ef669c10a75a6d8988"
 dependencies = [
  "casey",
  "enum-as-inner",
