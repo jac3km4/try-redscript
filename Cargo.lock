@@ -152,8 +152,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7fcd999463524c52659517fe2cea98493cfe485d10565e7b0fb07dbba7ad2753"
 dependencies = [
  "cfg-if 1.0.0",
+ "js-sys",
  "libc",
  "wasi",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -431,7 +433,7 @@ dependencies = [
 [[package]]
 name = "redscript"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=be5d4fe#be5d4fe652da20203d060bf9a9c862750b561dcc"
+source = "git+https://github.com/jac3km4/redscript.git?rev=b1ee3ba#b1ee3baf7d66fca6b404beb4b9016d3e4e0db055"
 dependencies = [
  "byteorder",
  "crc32fast",
@@ -442,7 +444,7 @@ dependencies = [
 [[package]]
 name = "redscript-compiler"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=be5d4fe#be5d4fe652da20203d060bf9a9c862750b561dcc"
+source = "git+https://github.com/jac3km4/redscript.git?rev=b1ee3ba#b1ee3baf7d66fca6b404beb4b9016d3e4e0db055"
 dependencies = [
  "im",
  "log",
@@ -456,7 +458,7 @@ dependencies = [
 [[package]]
 name = "redscript-vm"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript-vm.git?rev=c57edc1#c57edc15a50cd99b82060c11669d289e94d98501"
+source = "git+https://github.com/jac3km4/redscript-vm.git?rev=1b31ab8#1b31ab8e599d7e76c1ee182154609ed9ad711220"
 dependencies = [
  "casey",
  "enum-as-inner",
@@ -607,6 +609,7 @@ dependencies = [
 name = "try-redscript"
 version = "0.1.0"
 dependencies = [
+ "getrandom",
  "redscript",
  "redscript-compiler",
  "redscript-vm",
