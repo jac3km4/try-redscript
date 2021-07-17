@@ -6,7 +6,7 @@ use redscript::ast::Pos;
 use redscript::error::Error;
 use redscript_compiler::source_map::Files;
 use redscript_compiler::Compiler;
-use redscript_vm::{native, VM};
+use redscript_vm::{args, native, VM};
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 
@@ -131,11 +131,11 @@ fn execute(source: String) -> Result<String, Error> {
         .metadata()
         .get_function("main;")
         .ok_or_else(|| Error::CompileError("No main function".to_owned(), Pos::ZERO))?;
-    vm.call_with(main, &[]);
+    let result = vm.call_with_callback(main, args!(), |res| res.map(|val| val.to_string(&pool)));
 
     let mut buffer = buffer.borrow().to_owned();
-    if let Some(res) = vm.pretty_result() {
-        buffer.push_str(&format!("Result: {}", res));
+    if let Some(val) = result {
+        buffer.push_str(&format!("Result: {}", val));
     }
     Ok(buffer)
 }

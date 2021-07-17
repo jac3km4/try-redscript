@@ -4,9 +4,9 @@ version = 3
 
 [[package]]
 name = "anyhow"
-version = "1.0.41"
+version = "1.0.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "15af2628f6890fe2609a3b91bef4c83450512802e59489f9c1cb1fa5df064a61"
+checksum = "595d3cfa7a60d4555cb5067b99f07142a08ea778de5cf993f7b75c7d8fabc486"
 
 [[package]]
 name = "anymap"
@@ -146,6 +146,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "getrandom"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7fcd999463524c52659517fe2cea98493cfe485d10565e7b0fb07dbba7ad2753"
+dependencies = [
+ "cfg-if 1.0.0",
+ "libc",
+ "wasi",
+]
+
+[[package]]
 name = "gloo"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -232,7 +243,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "111c1983f3c5bb72732df25cddacee9b546d08325fb584b5ebd38148be7b0246"
 dependencies = [
  "bitmaps",
- "rand_core",
+ "rand_core 0.5.1",
  "rand_xoshiro",
  "sized-chunks",
  "typenum",
@@ -275,6 +286,12 @@ name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+
+[[package]]
+name = "libc"
+version = "0.2.98"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "320cfe77175da3a483efed4bc0adc1968ca050b098ce4f2f1c13a56626128790"
 
 [[package]]
 name = "log"
@@ -334,6 +351,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c719dcf55f09a3a7e764c6649ab594c18a177e3599c467983cdf644bfc0a4088"
 
 [[package]]
+name = "ppv-lite86"
+version = "0.2.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ac74c624d6b2d21f425f752262f42188365d7b8ff1aff74c82e45136510a4857"
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.24"
 source = "git+https://github.com/jac3km4/proc-macro2?branch=readd-wasm#01acb2c7dba5c68dd5da88dce40204cdee90cd44"
@@ -351,10 +374,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "rand"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2e7573632e6454cf6b99d7aac4ccca54be06da05aca2ef7423d22d27d4d4bcd8"
+dependencies = [
+ "libc",
+ "rand_chacha",
+ "rand_core 0.6.3",
+ "rand_hc",
+]
+
+[[package]]
+name = "rand_chacha"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
+dependencies = [
+ "ppv-lite86",
+ "rand_core 0.6.3",
+]
+
+[[package]]
 name = "rand_core"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "90bde5296fc891b0cef12a6d03ddccc162ce7b2aff54160af9338f8d40df6d19"
+
+[[package]]
+name = "rand_core"
+version = "0.6.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d34f1408f55294453790c48b2f1ebbb1c5b4b7563eb1f418bcfcfdbb06ebb4e7"
+dependencies = [
+ "getrandom",
+]
+
+[[package]]
+name = "rand_hc"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d51e9f596de227fda2ea6c84607f5558e196eeaf43c986b724ba4fb8fdf497e7"
+dependencies = [
+ "rand_core 0.6.3",
+]
 
 [[package]]
 name = "rand_xoshiro"
@@ -362,13 +425,13 @@ version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a9fcdd2e881d02f1d9390ae47ad8e5696a9e4be7b547a1da2afbc61973217004"
 dependencies = [
- "rand_core",
+ "rand_core 0.5.1",
 ]
 
 [[package]]
 name = "redscript"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=4836356#4836356f9f48905d6836749ba83aa9db139581ac"
+source = "git+https://github.com/jac3km4/redscript.git?rev=be5d4fe#be5d4fe652da20203d060bf9a9c862750b561dcc"
 dependencies = [
  "byteorder",
  "crc32fast",
@@ -379,7 +442,7 @@ dependencies = [
 [[package]]
 name = "redscript-compiler"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=4836356#4836356f9f48905d6836749ba83aa9db139581ac"
+source = "git+https://github.com/jac3km4/redscript.git?rev=be5d4fe#be5d4fe652da20203d060bf9a9c862750b561dcc"
 dependencies = [
  "im",
  "log",
@@ -393,13 +456,14 @@ dependencies = [
 [[package]]
 name = "redscript-vm"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript-vm.git?rev=06be69a#06be69aa22c6ca51c26c86ef669c10a75a6d8988"
+source = "git+https://github.com/jac3km4/redscript-vm.git?rev=c57edc1#c57edc15a50cd99b82060c11669d289e94d98501"
 dependencies = [
  "casey",
  "enum-as-inner",
  "gc-arena",
  "intmap",
  "log",
+ "rand",
  "redscript",
 ]
 
@@ -584,6 +648,12 @@ dependencies = [
  "winapi",
  "winapi-util",
 ]
+
+[[package]]
+name = "wasi"
+version = "0.10.2+wasi-snapshot-preview1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd6fbd9a79829dd1ad0cc20627bf1ed606756a7f77edff7b66b7064f9cb327c6"
 
 [[package]]
 name = "wasm-bindgen"

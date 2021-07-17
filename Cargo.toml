@@ -6,9 +6,9 @@ edition = "2018"
 [dependencies]
 yew = "0.18"
 wasm-bindgen = "0.2"
-redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "4836356" }
-redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "4836356" }
-redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "06be69a" }
+redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "be5d4fe" }
+redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "be5d4fe" }
+redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "c57edc1" }
 
 [profile.release]
 opt-level = "s"
