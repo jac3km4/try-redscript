@@ -5,7 +5,7 @@ use std::rc::Rc;
 use redscript::ast::Pos;
 use redscript::error::Error;
 use redscript_compiler::source_map::Files;
-use redscript_compiler::Compiler;
+use redscript_compiler::unit::CompilationUnit;
 use redscript_vm::{args, native, VM};
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
@@ -118,11 +118,11 @@ fn execute(source: String) -> Result<String, Error> {
     };
 
     let mut pool = native::default_pool();
-    let mut compiler = Compiler::new(&mut pool)?;
     let mut sources = Files::default();
     sources.add(PathBuf::from("natives"), NATIVE_DEFS.to_owned());
     sources.add(PathBuf::from("source"), source);
-    compiler.compile(&sources)?;
+
+    CompilationUnit::new(&mut pool)?.compile(&sources)?;
 
     let mut vm = VM::new(&pool);
     native::register_natives(&mut vm, log_handler);

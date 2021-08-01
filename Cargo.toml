@@ -6,9 +6,9 @@ edition = "2018"
 [dependencies]
 yew = "0.18"
 wasm-bindgen = "0.2"
-redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "f56de11" }
-redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "f56de11" }
-redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "39dbc8a" }
+redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "7510e97" }
+redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "7510e97" }
+redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "9ddcf19" }
 getrandom = { version = "0.2", features = ["js"] }
 
 [profile.release]
