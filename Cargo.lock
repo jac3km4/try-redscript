@@ -432,8 +432,8 @@ dependencies = [
 
 [[package]]
 name = "redscript"
-version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=b1ee3ba#b1ee3baf7d66fca6b404beb4b9016d3e4e0db055"
+version = "0.2.5-dev"
+source = "git+https://github.com/jac3km4/redscript.git?rev=f56de11#f56de112e26b8370cee47e8b0c685f08b2de0b29"
 dependencies = [
  "byteorder",
  "crc32fast",
@@ -443,8 +443,8 @@ dependencies = [
 
 [[package]]
 name = "redscript-compiler"
-version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript.git?rev=b1ee3ba#b1ee3baf7d66fca6b404beb4b9016d3e4e0db055"
+version = "0.2.5-dev"
+source = "git+https://github.com/jac3km4/redscript.git?rev=f56de11#f56de112e26b8370cee47e8b0c685f08b2de0b29"
 dependencies = [
  "im",
  "log",
@@ -458,7 +458,7 @@ dependencies = [
 [[package]]
 name = "redscript-vm"
 version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript-vm.git?rev=1b31ab8#1b31ab8e599d7e76c1ee182154609ed9ad711220"
+source = "git+https://github.com/jac3km4/redscript-vm.git?rev=39dbc8a#39dbc8a5542315a1c21ec02ee6fc981b6ef4d9a5"
 dependencies = [
  "casey",
  "enum-as-inner",
@@ -512,9 +512,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.64"
+version = "1.0.66"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "799e97dc9fdae36a5c8b8f2cae9ce2ee9fdce2058c57a93e6099d919fd982f79"
+checksum = "336b10da19a12ad094b59d870ebde26a45402e5b470add4b5fd03c5048a32127"
 dependencies = [
  "itoa",
  "ryu",
