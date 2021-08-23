@@ -4,9 +4,9 @@ version = 3
 
 [[package]]
 name = "anyhow"
-version = "1.0.42"
+version = "1.0.43"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "595d3cfa7a60d4555cb5067b99f07142a08ea778de5cf993f7b75c7d8fabc486"
+checksum = "28ae2b3dec75a406790005a200b1bd89785afc02517a00ca99ecfe093ee9e6cf"
 
 [[package]]
 name = "anymap"
@@ -262,9 +262,9 @@ checksum = "e50930385956f6c4a0b99f3dd654adcc40788456c36e17c5b20e1d1ceb523ec6"
 
 [[package]]
 name = "itoa"
-version = "0.4.7"
+version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dd25036021b0de88a0aff6b850051563c6516d0bf53f8638938edbb9de732736"
+checksum = "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
 
 [[package]]
 name = "js-sys"
@@ -283,9 +283,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.98"
+version = "0.2.100"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "320cfe77175da3a483efed4bc0adc1968ca050b098ce4f2f1c13a56626128790"
+checksum = "a1fa8cddc8fbbee11227ef194b5317ed014b8acbf15139bd716a18ad3fe99ec5"
 
 [[package]]
 name = "log"
@@ -446,8 +446,8 @@ dependencies = [
 
 [[package]]
 name = "redscript"
-version = "0.2.5-dev"
-source = "git+https://github.com/jac3km4/redscript.git?rev=7510e97#7510e976efcea48383387a3640385397d2718783"
+version = "0.3.0"
+source = "git+https://github.com/jac3km4/redscript.git?rev=v0.3.0#27ee4d999adbef9d0c10b3fced0e74b1c5bb598a"
 dependencies = [
  "byteorder",
  "crc32fast",
@@ -457,8 +457,8 @@ dependencies = [
 
 [[package]]
 name = "redscript-compiler"
-version = "0.2.5-dev"
-source = "git+https://github.com/jac3km4/redscript.git?rev=7510e97#7510e976efcea48383387a3640385397d2718783"
+version = "0.3.0"
+source = "git+https://github.com/jac3km4/redscript.git?rev=v0.3.0#27ee4d999adbef9d0c10b3fced0e74b1c5bb598a"
 dependencies = [
  "hamt-sync",
  "log",
@@ -471,8 +471,8 @@ dependencies = [
 
 [[package]]
 name = "redscript-vm"
-version = "0.1.0"
-source = "git+https://github.com/jac3km4/redscript-vm.git?rev=9ddcf19#9ddcf1943a4e149f30a31a880a8b3be4110a412a"
+version = "0.0.3"
+source = "git+https://github.com/jac3km4/redscript-vm.git?rev=v0.0.3#9ffe722b7c5b8ab3228b7b04309c8ffdc4ebddac"
 dependencies = [
  "casey",
  "enum-as-inner",
@@ -537,9 +537,9 @@ dependencies = [
 
 [[package]]
 name = "slab"
-version = "0.4.3"
+version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f173ac3d1a7e3b28003f40de0b5ce7fe2710f9b9dc3fc38664cebee46b3b6527"
+checksum = "c307a32c1c5c437f38c7fd45d753050587732ba8628319fbdf12a7e289ccc590"
 
 [[package]]
 name = "static_assertions"
