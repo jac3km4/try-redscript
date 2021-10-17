@@ -2,7 +2,7 @@ use std::cell::RefCell;
 use std::path::PathBuf;
 use std::rc::Rc;
 
-use redscript::ast::Pos;
+use redscript::ast::Span;
 use redscript::error::Error;
 use redscript_compiler::source_map::Files;
 use redscript_compiler::unit::CompilationUnit;
@@ -122,7 +122,7 @@ fn execute(source: String) -> Result<String, Error> {
     sources.add(PathBuf::from("natives"), NATIVE_DEFS.to_owned());
     sources.add(PathBuf::from("source"), source);
 
-    CompilationUnit::new(&mut pool)?.compile(&sources)?;
+    CompilationUnit::new(&mut pool)?.compile_files(&sources)?;
 
     let mut vm = VM::new(&pool);
     native::register_natives(&mut vm, log_handler);
@@ -130,7 +130,7 @@ fn execute(source: String) -> Result<String, Error> {
     let main = vm
         .metadata()
         .get_function("main;")
-        .ok_or_else(|| Error::CompileError("No main function".to_owned(), Pos::ZERO))?;
+        .ok_or_else(|| Error::CompileError("No main function".to_owned(), Span::ZERO))?;
     let result = vm.call_with_callback(main, args!(), |res| res.map(|val| val.to_string(&pool)));
 
     let mut buffer = buffer.borrow().to_owned();
