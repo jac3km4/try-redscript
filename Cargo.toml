@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-yew = "0.18"
+yew = "0.19"
 wasm-bindgen = "0.2"
-redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "29b744d" }
-redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "29b744d" }
-redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "8138861" }
+redscript = { git = "https://github.com/jac3km4/redscript.git", package = "redscript", rev = "v0.4.0-RC2" }
+redscript-compiler = { git = "https://github.com/jac3km4/redscript.git", package = "redscript-compiler", rev = "v0.4.0-RC2" }
+redscript-vm = { git = "https://github.com/jac3km4/redscript-vm.git", package = "redscript-vm", rev = "c376cfd" }
 getrandom = { version = "0.2", features = ["js"] }
 
 [profile.release]

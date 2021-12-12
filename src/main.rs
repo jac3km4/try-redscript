@@ -3,11 +3,12 @@ use std::path::PathBuf;
 use std::rc::Rc;
 
 use redscript::ast::Span;
-use redscript::error::Error;
+use redscript_compiler::error::Error;
 use redscript_compiler::source_map::Files;
 use redscript_compiler::unit::CompilationUnit;
 use redscript_vm::{args, native, VM};
 use wasm_bindgen::prelude::*;
+use yew::html::Scope;
 use yew::prelude::*;
 
 fn main() {
@@ -23,7 +24,7 @@ enum Msg {
 }
 
 struct Model {
-    link: ComponentLink<Self>,
+    link: Scope<Self>,
     editor: Option<Editor>,
     output: String,
 }
@@ -32,15 +33,15 @@ impl Component for Model {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(ctx: &Context<Self>) -> Self {
         Self {
-            link,
+            link: ctx.link().clone(),
             editor: None,
             output: String::new(),
         }
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::Execute => {
                 let text = self.editor.as_ref().unwrap().get_value();
@@ -50,11 +51,11 @@ impl Component for Model {
         }
     }
 
-    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
+    fn changed(&mut self, _ctx: &Context<Self>) -> bool {
         false
     }
 
-    fn view(&self) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <div>
                 <nav>
@@ -69,7 +70,7 @@ impl Component for Model {
                             {DEFAULT_CODE}
                         </div>
                         <div class="output-bar column column-33">
-                            <button onclick=self.link.callback(|_| Msg::Execute)>{ "Run" }</button>
+                            <button onclick={self.link.callback(|_| Msg::Execute)}>{ "Run" }</button>
                             <pre>
                                 <code> { if self.output.is_empty() { "No output" } else { &self.output } } </code>
                             </pre>
@@ -80,7 +81,7 @@ impl Component for Model {
         }
     }
 
-    fn rendered(&mut self, first_render: bool) {
+    fn rendered(&mut self, _ctx: &Context<Self>, first_render: bool) {
         if first_render {
             let editor = edit("editor");
             editor.set_theme("ace/theme/tomorrow_night");
